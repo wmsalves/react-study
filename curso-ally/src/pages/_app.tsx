@@ -1,6 +1,14 @@
 import type { AppProps } from "next/app";
-import "../styles/global.css";
+import { axeAccessibilityReporter } from "../utils/axeAccessibilityReporter";
 
-export default function App({ Component, pageProps }: AppProps) {
+import "../styles/global.css";
+import { use, useEffect } from "react";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    axeAccessibilityReporter(pageProps.axeResults);
+  }, []);
   return <Component {...pageProps} />;
 }
+
+export default MyApp;
