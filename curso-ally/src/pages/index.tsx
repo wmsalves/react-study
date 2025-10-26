@@ -1,3 +1,4 @@
+import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 
 import Head from "next/head";
@@ -5,21 +6,13 @@ import Head from "next/head";
 import LogoImg from "../assets/logo.svg";
 
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  function handleModalOpen() {
-    setIsModalOpen(true);
-  }
-
   return (
     <>
       <Head>
         <title>Desenvolvendo uma web acessível | Rocketseat Blog</title>
       </Head>
-
       <header className={styles.header}>
         <Image src={LogoImg} width={286 / 2} alt="Blog da Rocketseat" />
 
@@ -75,24 +68,34 @@ export default function Home() {
 
           <h2>O que é acessibilidade, afinal?</h2>
         </article>
+
+        <audio src="audio.mp3"></audio>
       </main>
 
       <footer className={styles.footer}>
         <Image src={LogoImg} width={286 / 2} alt="Blog da Rocketseat" />
 
         <nav className={styles.nav} aria-label="Rodapé">
-          <button type="button" onClick={handleModalOpen}>
-            Termos de uso
-          </button>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <button type="button">Termos de uso</button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <Dialog.Overlay className={styles.overlay} />
+
+              <Dialog.Content className={styles.modal}>
+                <Dialog.Title>Termos de uso</Dialog.Title>
+                <Dialog.Description>
+                  Esses são os termos de uso
+                </Dialog.Description>
+                <Dialog.Close asChild>
+                  <button className={styles.closeModalButton}>Fechar</button>
+                </Dialog.Close>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
         </nav>
       </footer>
-
-      {isModalOpen && (
-        <div className={styles.modal}>
-          <h2>Termos de uso</h2>
-          <p>Esses são os termos de uso</p>
-        </div>
-      )}
     </>
   );
 }
