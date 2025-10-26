@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 
+import Image from "next/image";
 import Head from "next/head";
 
 import LogoImg from "../assets/logo.svg";
