@@ -69,6 +69,41 @@
         );
       }
 
+      function Checkbox() {
+        return (
+          <>
+            <div className="form__campo-checkbox">
+              <input type="checkbox" id="lembrar" />
+              <label for="lembrar" />
+            </div>
+            <p className="form__opcoes-texto">Lembrar-me</p>
+          </>
+        );
+      }
+
+      function Texto({ classe, children }) {
+        return <p className={classe}>{children}</p>;
+      }
+
+      function ItemRedesSociais({ link, nome }) {
+        return (
+          <li>
+            <a href={link}>
+              <img src={`./img/${nome}.svg`} alt={`ícone do ${nome}`} />
+              {nome}
+            </a>
+          </li>
+        );
+      }
+
+      function Link({ children }) {
+        return (
+          <a href="#" className="container-links__link">
+            {children}
+          </a>
+        );
+      }
+
       function PaginaDeLogin() {
         const [email, setEmail] = React.useState("");
         const [senha, setSenha] = React.useState("");
@@ -88,7 +123,7 @@
             <section>
               <form onSubmit={handleSubmit}>
                 <Titulo>Login</Titulo>
-                <Subtitulo>Boas vindas! Faça o seu login</Subtitulo>
+                <Subtitulo>Boas-vindas! Faça o seu login</Subtitulo>
                 <CampoDeDigitacao
                   label="E-mail ou usuário"
                   tipo="email"
@@ -103,8 +138,35 @@
                   value={senha}
                   setValor={setSenha}
                 />
+                <fieldset className="form__opcoes">
+                  <Checkbox />
+                  <p>
+                    <a href="#" aria-label="Recuperar senha esquecida">
+                      Esqueci a senha
+                    </a>
+                  </p>
+                </fieldset>
                 <Botao>Login</Botao>
               </form>
+              <div className="container-links">
+                <Texto classe="container-links__titulo">
+                  ou entre com outras contas
+                </Texto>
+                <ul>
+                  <ItemRedesSociais
+                    link="https://www.github.com"
+                    nome="Github"
+                  />
+                  <ItemRedesSociais
+                    link="https://www.google.com"
+                    nome="Google"
+                  />
+                </ul>
+                <Texto classe="container-links__texto">
+                  Ainda não tem conta?
+                </Texto>
+                <Link>Crie seu cadastro!</Link>
+              </div>
             </section>
           </div>
         );
