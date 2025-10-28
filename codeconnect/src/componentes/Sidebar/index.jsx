@@ -4,7 +4,6 @@ import Account from "./assets/account_circle.svg";
 import Info from "./assets/info.svg";
 import Logout from "./assets/logout.svg";
 import "./styles.css";
-
 export default function Sidebar() {
   return (
     <aside>

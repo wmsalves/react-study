@@ -1,0 +1,10 @@
+.container {
+  width: 62vw;
+  margin: 3.5em auto;
+  display: flex;
+  gap: 16px;
+}
+
+.container div {
+  flex-grow: 2;
+}
