@@ -7,6 +7,7 @@ import SelecaoCliente from "../paginas/cadastro/SelecaoCliente";
 import LayoutBase from "../paginas/LayoutBase";
 import PaginaInicial from "../paginas/PaginaInicial/PaginaInicial";
 import Pagina404 from "../paginas/erros/Pagina404";
+import Login from "../paginas/Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <PaginaInicial />,
+      },
+      {
+        path: "",
+        element: <Login />,
       },
       {
         path: "cadastro",

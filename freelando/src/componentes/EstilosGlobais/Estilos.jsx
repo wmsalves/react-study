@@ -8,6 +8,9 @@ const estilos = (tema) => {
     body: {
       margin: 0,
     },
+    a: {
+      textDecoration: "none",
+    },
   };
 };
 
