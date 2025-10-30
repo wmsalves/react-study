@@ -4,6 +4,7 @@ import { Botao } from "../../componentes/Botao/Botao";
 import { Link, useNavigate } from "react-router-dom";
 import { useCadastroUsuarioContext } from "../../contexto/CadastroUsuario";
 import { useEffect } from "react";
+import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 
 const opcoes = [
   {
