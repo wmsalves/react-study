@@ -12,7 +12,7 @@ import { ListaInline } from "../componentes/Lista/ListaInline";
 import { Rodape } from "../componentes/Rodape/Rodape";
 import { Tipografia } from "../componentes/Tipografia/Tipografia";
 
-const LayoutBase = () => {
+const LayoutBase = ({ children }) => {
   return (
     <>
       <Cabecalho>
@@ -28,7 +28,7 @@ const LayoutBase = () => {
         </Container>
       </Cabecalho>
       <Outlet />
-
+      {children}
       <Rodape>
         <Container>
           <Row align="center">
