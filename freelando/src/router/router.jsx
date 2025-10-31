@@ -24,6 +24,15 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "area-logada",
+        children: [
+          {
+            path: "perfil",
+            element: <Perfil />,
+          },
+        ],
+      },
+      {
         path: "cadastro",
         element: <LayoutBaseCadastro />,
         children: [
