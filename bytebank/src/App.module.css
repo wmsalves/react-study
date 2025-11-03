@@ -4,7 +4,7 @@ html {
   flex-direction: column;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   display: flex;
   flex: 1;
   flex-direction: column;
