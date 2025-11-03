@@ -6,7 +6,7 @@ export default function Extrato({ transacoes }) {
   return (
     <section className={estilos.container}>
       <h2 className={estilos.titulo}>Extrato</h2>
-      <ul>
+      <ul data-testid="lista-transacoes">
         {transacoes.map((transacao, indice) => {
           return (
             <Transacoes key={indice} transacao={transacao} estilos={estilos} />

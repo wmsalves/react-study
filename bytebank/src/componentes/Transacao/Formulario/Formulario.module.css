@@ -8,6 +8,13 @@
   z-index: 1;
 }
 
+.areaValor {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  margin-top: 2rem;
+}
+
 .grupo__opcoes {
   border-radius: 6px;
   padding: 8px;

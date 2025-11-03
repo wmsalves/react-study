@@ -26,34 +26,38 @@ export default function Formulario({ realizarTransacao }) {
 
   return (
     <form className={estilos.formulario} onSubmit={handleSubmit}>
-      <h3 className={estilos.legenda__opcoes}>Nova Transação</h3>
-      <select
-        className={estilos.grupo__opcoes}
-        onChange={handleChange}
-        name="transacao"
-        data-testid="select-opcoes"
-      >
-        <option defaultValue="Selecione um tipo de transação">
-          Selecione um tipo de transação
-        </option>
-        <option value="Depósito">Depósito</option>
-        <option value="Transferência">Transferência</option>
-      </select>
-      <label htmlFor="valor" className={estilos.legenda}>
-        Valor
-      </label>
-      <input
-        onChange={handleChange}
-        className={estilos.campo__valor}
-        type="number"
-        value={valor.valor}
-        name="valor"
-        id="valor"
-        placeholder="Digite um valor"
-      />
-      <button className={estilos.botao} type="submit">
-        Realizar transação
-      </button>
+      <div>
+        <h3 className={estilos.legenda__opcoes}>Nova Transação</h3>
+        <select
+          className={estilos.grupo__opcoes}
+          onChange={handleChange}
+          name="transacao"
+          data-testid="select-opcoes"
+        >
+          <option defaultValue="Selecione um tipo de transação">
+            Selecione um tipo de transação
+          </option>
+          <option value="Depósito">Depósito</option>
+          <option value="Transferência">Transferência</option>
+        </select>
+      </div>
+      <div className={estilos.areaValor}>
+        <label htmlFor="valor" className={estilos.legenda}>
+          Valor
+        </label>
+        <input
+          onChange={handleChange}
+          className={estilos.campo__valor}
+          type="number"
+          value={valor.valor}
+          name="valor"
+          id="valor"
+          placeholder="Digite um valor"
+        />
+        <button className={estilos.botao} type="submit">
+          Realizar transação
+        </button>
+      </div>
     </form>
   );
 }

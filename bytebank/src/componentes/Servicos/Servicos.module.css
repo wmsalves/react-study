@@ -1,10 +1,36 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 16px;
+  align-content: center;
   align-items: flex-start;
-  width: 60%;
+  flex-wrap: wrap;
   height: 100%;
+  width: 100%;
+}
+
+.servicos {
+  width: 162px;
+  height: 137px;
+  padding: 8px;
+  background: #f2f2f2;
+  border-radius: 8px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.servicos:hover {
+  border: 2px solid;
+  border-color: #47a138;
+  background: #e4ede3;
+}
+
+.servicos img {
+  margin-bottom: 1rem;
 }
 
 .detalhe__superior {
@@ -28,5 +54,4 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: -1;
 }

@@ -9,7 +9,7 @@ describe('Quando eu realizo uma transação', () => {
 
     const novoSaldo = calculaNovoSaldo(transacao, 100);
 
-    expect(novoSaldo).toBe(50);
+    expect(novoSaldo).toBe(150);
   });
 
   test('Que é uma Transferência, o saldo deve diminuir', () => {
@@ -20,7 +20,7 @@ describe('Quando eu realizo uma transação', () => {
 
     const novoSaldo = calculaNovoSaldo(transacao, 100);
 
-    expect(novoSaldo).toBe(150);
+    expect(novoSaldo).toBe(50);
   });
 });
 
