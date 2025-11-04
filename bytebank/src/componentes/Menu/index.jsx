@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import estilos from './Menu.module.css';
 
 const listaMenu = [
-  { link: 'Início', href: '/' },
-  { link: 'Cartões', href: '/cartoes' },
-  { link: 'Serviços', href: '/servicos' },
-  { link: 'Investimentos', href: '/investimentos' },
+  { link: 'Início', href: '/home' },
+  { link: 'Cartões', href: '/home/cartoes' },
+  { link: 'Serviços', href: '/home/servicos' },
+  { link: 'Investimentos', href: '/home/investimentos' },
 ];
 
 export default function Menu({ path }) {
