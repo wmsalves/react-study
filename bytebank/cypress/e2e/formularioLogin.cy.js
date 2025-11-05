@@ -1,11 +1,15 @@
 describe('Formulario de Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.login('wemerson@gmail.com', '123456');
+  });
+
+  it('Deve acessar a página home', () => {
+    cy.getByData('titulo-boas-vindas').should('contain', 'Bem vindo de volta!');
   });
 
   it('Não deve permitir um email inválido', () => {
     cy.getByData('botao-login').click();
-    cy.getByData('email-input').type('wemerson@alura');
+    cy.getByData('email-input').type('neilton@alura');
     cy.getByData('senha-input').type('123456');
     cy.getByData('botao-enviar').click();
     cy.getByData('mensagem-erro')
@@ -13,7 +17,7 @@ describe('Formulario de Login', () => {
       .and('have.text', 'O email digitado é inválido');
   });
 
-  it.only('Não deve permitir um campo em branco', () => {
+  it('Não deve permitir um campo em branco', () => {
     cy.getByData('botao-login').click();
     cy.getByData('senha-input').type('123456');
     cy.getByData('botao-enviar').click();
