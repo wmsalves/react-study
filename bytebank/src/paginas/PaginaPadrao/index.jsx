@@ -6,10 +6,10 @@ export default function PaginaPadrao() {
   const location = useLocation();
 
   return (
-    <div className="conteudo-pagina">
+    <>
       <Cabecalho path={location.pathname} />
       <Outlet />
       {(location.pathname === '/' || location.pathname === '*') && <Rodape />}
-    </div>
+    </>
   );
 }

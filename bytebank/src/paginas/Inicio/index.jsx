@@ -1,10 +1,12 @@
 import React from 'react';
-import ilustracaoBanner from 'assets/ilustracao-banner.svg';
+import Cabecalho from '../../componentes/Cabecalho';
+import Rodape from '../../componentes/Rodape';
+import ilustracaoBanner from '../../assets/ilustracao-banner.svg';
 import estilos from './Inicio.module.css';
-import presente from 'assets/presente.svg';
-import saque from 'assets/saque.svg';
-import estrela from 'assets/estrela.svg';
-import dispositivo from 'assets/dispositivo.svg';
+import presente from '../../assets/presente.svg';
+import saque from '../../assets/saque.svg';
+import estrela from '../../assets/estrela.svg';
+import dispositivo from '../../assets/dispositivo.svg';
 
 export default function Inicio() {
   return (

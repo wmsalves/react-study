@@ -1,5 +1,6 @@
 html {
   display: flex;
+  min-height: 100%;
   flex-direction: column;
 }
 
@@ -9,10 +10,6 @@ body {
   flex: 1;
   flex-direction: column;
   background-color: #e3f9e5;
-}
-
-.conteudo-pagina {
-  height: 100%;
 }
 
 * {

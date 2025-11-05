@@ -1,24 +1,15 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Extrato, Menu, Principal, Transacao } from 'componentes';
-import { calculaNovoSaldo } from 'utils';
-import { salvaTransacao } from 'services/transacoes';
-import { atualizaSaldo } from 'services/saldo';
-import useListaTransacoes from 'hooks/useListaTransacoes';
-import useSaldo from 'hooks/useSaldo';
 import estilos from './App.module.css';
 
-export default function Home() {
-  const [saldo, setSaldo] = useSaldo();
-  const [transacoes, setTransacoes] = useListaTransacoes();
-  const location = useLocation();
+import Extrato from './Extrato';
+import Menu from 'paginas/Home/Menu';
+import Principal from './Principal';
+import NovaTransacao from './NovaTransacao';
+import { useHomeContext } from 'common/hooks/useHomeContext';
 
-  function realizarTransacao(valores) {
-    const novoSaldo = calculaNovoSaldo(valores, saldo);
-    setSaldo(novoSaldo);
-    atualizaSaldo(novoSaldo);
-    setTransacoes([...transacoes, valores]);
-    salvaTransacao(valores);
-  }
+export default function Home() {
+  const { saldo, transacoes, realizarTransacao } = useHomeContext();
+  const location = useLocation();
 
   return (
     <>
@@ -27,10 +18,12 @@ export default function Home() {
         <div className={estilos.envelope}>
           <Principal saldo={saldo} />
           {location.pathname === '/home' && (
-            <Transacao realizarTransacao={realizarTransacao} />
+            <NovaTransacao realizarTransacao={realizarTransacao} />
           )}
           <Outlet />
-          <noscript data-testid="local">{location.pathname}</noscript>
+          <noscript data-testid="location-pathname">
+            {location.pathname}
+          </noscript>
         </div>
         <Extrato transacoes={transacoes} />
       </main>

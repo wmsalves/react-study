@@ -1,8 +1,9 @@
 import React from 'react';
 import estilos from './Pagina404.module.css';
 import espaco from './404.svg';
+import Cabecalho from '../../componentes/Cabecalho';
+import Rodape from '../../componentes/Rodape';
 import { Link } from 'react-router-dom';
-import { Cabecalho, Rodape } from 'componentes';
 
 export default function Pagina404() {
   return (
