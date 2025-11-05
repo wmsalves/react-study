@@ -1,10 +1,11 @@
 describe('Formulario de Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('http://localhost:3000');
   });
+
   it('Não deve permitir um email inválido', () => {
     cy.getByData('botao-login').click();
-    cy.getByData('email-input').type('wemerson@curso');
+    cy.getByData('email-input').type('wemerson@alura');
     cy.getByData('senha-input').type('123456');
     cy.getByData('botao-enviar').click();
     cy.getByData('mensagem-erro')
