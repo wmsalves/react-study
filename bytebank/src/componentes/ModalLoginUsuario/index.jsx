@@ -32,7 +32,7 @@ export default function ModalLoginUsuario({
     }
 
     api
-      .post('/public/login', usuario)
+      .post('/users/login', usuario)
       .then((resposta) => {
         sessionStorage.setItem('token', resposta.data.access_token);
         setEmail('');
