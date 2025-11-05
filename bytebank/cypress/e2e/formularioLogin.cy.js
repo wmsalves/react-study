@@ -1,9 +1,7 @@
 describe('Formulario de Login', () => {
-  beforeEach(() => {
-    cy.login('wemerson@gmail.com', '123456');
-  });
-
-  it('Deve acessar a página home', () => {
+  it.only('Deve acessar a página home', () => {
+    cy.login('wemerosn@gmail.com', '123456');
+    cy.visit('/home');
     cy.getByData('titulo-boas-vindas').should('contain', 'Bem vindo de volta!');
   });
 
