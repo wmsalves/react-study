@@ -1,8 +1,10 @@
+import { faker } from '@faker-js/faker/locale/pt_BR';
+
 describe('Teste de cadastro de usuário', () => {
   const usuario = {
-    nome: 'Joao Melo',
-    email: 'joaomelo@gmail.com',
-    senha: 'joao890',
+    nome: faker.name.fullName(),
+    email: faker.internet.email(),
+    senha: faker.internet.password(),
   };
   it('Deve permitir cadastrar um usuário com sucesso', () => {
     cy.visit('/');

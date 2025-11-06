@@ -1,5 +1,17 @@
 describe('Formulario de Login', () => {
   it.only('Deve acessar a página home', () => {
+    cy.fixture('usuarios').then((usuario) => {
+      cy.login(usuario[0].email, usuario[0].senha);
+      cy.visit('/home');
+      cy.url().should('include', '/home');
+      cy.getByData('titulo-boas-vindas').should(
+        'contain',
+        'Bem vindo de volta!'
+      );
+      cy.contains(usuario[0].nome).should('be.visible');
+    });
+  });
+  it.only('Deve acessar a página home', () => {
     cy.login('wemerosn@gmail.com', '123456');
     cy.visit('/home');
     cy.getByData('titulo-boas-vindas').should('contain', 'Bem vindo de volta!');
