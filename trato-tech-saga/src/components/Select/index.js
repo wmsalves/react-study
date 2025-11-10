@@ -1,5 +1,5 @@
-import { forwardRef } from 'react';
-import styles from './Select.module.scss';
+import { forwardRef } from "react";
+import styles from "./Select.module.scss";
 
 function Select({ value, onChange, children, ...outrosProps }, ref) {
   return (
@@ -12,7 +12,7 @@ function Select({ value, onChange, children, ...outrosProps }, ref) {
     >
       {children}
     </select>
-  )
+  );
 }
 
 export default forwardRef(Select);

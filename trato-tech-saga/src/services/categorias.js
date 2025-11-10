@@ -1,8 +1,8 @@
-import instance from 'common/config/api';
+import instance from "common/config/api";
 
 const categoriasService = {
   buscar: async () => {
-    const resposta = await instance.get('/categorias');
+    const resposta = await instance.get("/categorias");
 
     return resposta.data;
   },
@@ -10,7 +10,7 @@ const categoriasService = {
     const resposta = await instance.get(`/categorias/${nomeCategoria}`);
 
     return resposta.data;
-  }
-}
+  },
+};
 
 export default categoriasService;

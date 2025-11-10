@@ -1,22 +1,26 @@
-import Button from 'components/Button';
-import Header from 'components/Header';
-import Item from 'components/Item';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { carregarUmaCategoria } from 'store/reducers/categorias';
-import styles from './Categoria.module.scss';
+import Button from "components/Button";
+import Header from "components/Header";
+import Item from "components/Item";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { carregarUmaCategoria } from "store/reducers/categorias";
+import styles from "./Categoria.module.scss";
 
 export default function Categoria() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nomeCategoria } = useParams();
-  const { categoria, itens } = useSelector(state => {
-    const regexp = new RegExp(state.busca, 'i');
+  const { categoria, itens } = useSelector((state) => {
+    const regexp = new RegExp(state.busca, "i");
     return {
-      categoria: state.categorias.find(categoria => categoria.id === nomeCategoria) || {},
-      itens: state.itens.filter(item => item.categoria === nomeCategoria && item.titulo.match(regexp))
-    }
+      categoria:
+        state.categorias.find((categoria) => categoria.id === nomeCategoria) ||
+        {},
+      itens: state.itens.filter(
+        (item) => item.categoria === nomeCategoria && item.titulo.match(regexp)
+      ),
+    };
   });
 
   useEffect(() => {
@@ -35,10 +39,10 @@ export default function Categoria() {
         </Button>
       </Header>
       <div className={styles.itens}>
-        {itens?.map(item => (
+        {itens?.map((item) => (
           <Item key={item.id} {...item} />
         ))}
       </div>
     </div>
-  )
+  );
 }
