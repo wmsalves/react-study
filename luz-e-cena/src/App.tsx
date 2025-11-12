@@ -1,7 +1,15 @@
-import "./App.css";
+import Banner from "./components/Banner";
+import Link from "./components/Link";
 
 function App() {
-  return <h1>Olá mundo</h1>;
+  return (
+    <>
+      <Banner src="./banner.png" alt="Banner" />;
+      <Link href="/" target="_blank">
+        Link
+      </Link>
+    </>
+  );
 }
 
 export default App;

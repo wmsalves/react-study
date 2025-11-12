@@ -1,68 +1,65 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --preto: #1e1e1e;
+  --cinza-escuro: #252530;
+  --cinza-medio: #a6a6a6;
+  --cinza-claro: #efefef;
+  --branco: #ffffff;
+  --verde: #c3ff95;
+  --azul: #6f99ff;
+  --azul-claro: #ccdbff;
+  --amarelo: #f5d010;
+  --coral: #ed7562;
+  --vermelho: #f45866;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --border-color: #a6a6a6;
+  --box-shadow-card: 0px 4px 24px 0px #7b7b7b26;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  --fonte-texto: "Poppins", sans-serif;
+  --fonte-titulo: "Dela Gothic One", sans-serif;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --gap-xs: 0.5rem;
+  --gap-s: 1rem;
+  --gap-m: 1.5rem;
+  --gap-l: 2rem;
+  --gap-xl: 3.5rem;
+
+  --padding-xs: 0.5rem;
+  --padding-s: 1rem;
+  --padding-m: 1.5rem;
+  --padding-l: 2rem;
+  --padding-xl: 3.5rem;
+  --padding-xxl: 5rem;
+
+  --font-size-xs: 0.75rem;
+  --font-size-s: 1rem;
+  --font-size-m: 1.25rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 3rem;
+  --font-size-xxl: 4.75rem;
+
+  --max-width-block: 75rem;
+
+  --margin-xs: 0.5rem;
+  --margin-s: 1rem;
+  --margin-m: 1.5rem;
+  --margin-l: 2rem;
+  --margin-xl: 3rem;
+  --margin-xxl: 6rem;
 }
 
 body {
+  width: 100%;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: var(--fonte-texto);
+  font-size: var(--font-size-s);
+  font-weight: 400;
+}
+
+main {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  flex-direction: column;
+  align-items: center;
 }
