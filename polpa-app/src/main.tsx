@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./screens/Home";
 import Cadastro from "./screens/Cadastro";
 import GlobalStyle from "./GlobalStyle";
+import AppProvider from "./context/AppContext";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <GlobalStyle />
-    <RouterProvider router={router} />
+    <AppProvider>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </AppProvider>
   </StrictMode>
 );
