@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MoneyIcon from "../Icones/MoneyIcon";
 import Transacao from "../Transacao";
 import { Cartao, CartaoCabecalho, CartaoCorpo } from "../Cartao";
 import Botao from "../Botao";
-import TransacaoModal from "../TransacaoModal";
 import styled from "styled-components";
+import Modal, { ModalHandle } from "../Modal";
+import { Form } from "react-router";
+import Label from "../Label";
+import CampoTexto from "../CampoTexto";
+import Fieldset from "../Fieldset";
+import { SelectGroup, SelectOption } from "../Select";
 
 export const Container = styled(CartaoCorpo)`
   padding: var(--padding-l) var(--padding-m);
@@ -60,15 +65,15 @@ const transacoes = [
 ];
 
 const Transacoes = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef<ModalHandle>(null);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const [novaTransacao, setNovaTransacao] = useState({
+    nome: "",
+    valor: 0,
+    tipo: "",
+    categoria: "",
+    data: "",
+  });
 
   return (
     <Cartao>
@@ -85,16 +90,94 @@ const Transacoes = () => {
             />
           ))}
         </ListaMovimentacoes>
-        <Botao $variante="neutro" onClick={() => handleOpenModal()}>
+        <Botao $variante="neutro" onClick={() => modalRef.current?.open()}>
           <MoneyIcon />
           Adicionar transação
         </Botao>
-        {isModalOpen && (
-          <TransacaoModal
-            isOpen={isModalOpen}
-            onCloseModal={() => handleCloseModal()}
-          />
-        )}
+        <Modal
+          ref={modalRef}
+          cliqueForaModal
+          titulo="Adicionar transação"
+          icon={<MoneyIcon />}
+          aoClicar={() => alert("modal aberta")}
+        >
+          <Form>
+            <Fieldset>
+              <Label htmlFor="nomeTransacao">Nome da transação</Label>
+              <CampoTexto
+                type="text"
+                id="nomeTransacao"
+                placeholder="Ex: Compra na padaria"
+                value={novaTransacao.nome}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNovaTransacao({ ...novaTransacao, nome: e.target.value })
+                }
+              />
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="valor">Valor</Label>
+              <CampoTexto
+                type="number"
+                id="valor"
+                placeholder="10"
+                value={novaTransacao.valor}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNovaTransacao({
+                    ...novaTransacao,
+                    valor: parseFloat(e.target.value),
+                  })
+                }
+              />
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="tipo">Tipo</Label>
+              <SelectGroup
+                id="tipo"
+                value={novaTransacao.tipo}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setNovaTransacao({
+                    ...novaTransacao,
+                    tipo: e.target.value,
+                  })
+                }
+              >
+                <SelectOption value="">Selecione o tipo</SelectOption>
+                <SelectOption value="receita">Receita</SelectOption>
+                <SelectOption value="despesa">Despesa</SelectOption>
+              </SelectGroup>
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="valor">Data</Label>
+              <CampoTexto
+                type="date"
+                id="valor"
+                placeholder="dd/mm/aaaa"
+                value={novaTransacao.data}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNovaTransacao({
+                    ...novaTransacao,
+                    data: e.target.value,
+                  })
+                }
+              />
+            </Fieldset>
+            <Fieldset>
+              <Label htmlFor="categoria">Categoria</Label>
+              <CampoTexto
+                type="text"
+                id="categoria"
+                placeholder="Alimentação"
+                value={novaTransacao.categoria}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNovaTransacao({
+                    ...novaTransacao,
+                    categoria: e.target.value,
+                  })
+                }
+              />
+            </Fieldset>
+          </Form>
+        </Modal>
       </Container>
     </Cartao>
   );
