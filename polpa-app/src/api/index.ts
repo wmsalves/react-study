@@ -27,7 +27,7 @@ export const criarUsuario = async (
 
 export const atualizarUsuario = async (
   id: string,
-  dados: IUsuario
+  dados: Partial<IUsuario>
 ): Promise<IUsuario> => {
   const { data } = await api.patch(`/usuarios/${id}`, dados);
   return data;
@@ -39,8 +39,28 @@ export const obterTransacoes = async (): Promise<ITransacoes[]> => {
 };
 
 export const criarTransacao = async (
-  transacao: Omit<ITransacoes, "id">
-): Promise<ITransacoes> => {
-  const { data } = await api.post<ITransacoes>("/transacoes", transacao);
-  return data;
+  transacao: Omit<ITransacoes, "id" | "userId">,
+  usuario: Omit<IUsuario, "nome">
+): Promise<{ transacao: ITransacoes; novoOrcamentoDiario: number }> => {
+  const transacaoComId = { ...transacao, userId: usuario.id };
+  const { data } = await api.post<ITransacoes>("/transacoes", transacaoComId);
+
+  const transacoes = await obterTransacoes();
+  const saldo = calcularSaldo(transacoes);
+
+  const novoOrcamentoDiario = usuario.renda / 30 + saldo;
+
+  await atualizarUsuario(usuario.id, {
+    orcamentoDiario: novoOrcamentoDiario,
+  }).catch((error) => console.error(error));
+
+  return { transacao: data, novoOrcamentoDiario };
+};
+
+const calcularSaldo = (transacoes: ITransacoes[]): number => {
+  return transacoes.reduce((total, transacao) => {
+    return transacao.tipo === "receita"
+      ? total + transacao.valor
+      : total - transacao.valor;
+  }, 0);
 };
