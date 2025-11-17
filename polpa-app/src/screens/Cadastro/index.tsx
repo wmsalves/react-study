@@ -18,7 +18,7 @@ import { useAppContext } from "../../context/AppContext.tsx";
 
 const Cadastro = () => {
   const { criaUsuario } = useAppContext();
-  const [form, setForm] = useState<Omit<IUsuario, "id">>({
+  const [form, setForm] = useState<Omit<IUsuario, "id" | "orcamentoDiario">>({
     nome: "",
     renda: 0,
   });
