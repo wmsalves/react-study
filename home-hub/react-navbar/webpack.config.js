@@ -4,7 +4,7 @@ const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName: "home-hub",
-    projectName: "hello-world",
+    projectName: "react-navbar",
     webpackConfigEnv,
     argv,
   });

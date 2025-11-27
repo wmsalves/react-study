@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist"
   },
-  "files": ["src/home-hub-hello-world.tsx"],
+  "files": ["src/home-hub-react-navbar.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
